@@ -36,6 +36,9 @@ public class HangMan {
      */
     private static int mFilledInChars = 0;
 
+    /**
+     * A counter to show the user where in the game he is
+     */
     private static int mGameCounter = 0;
 
     public static void main(String[] args){
@@ -79,7 +82,7 @@ public class HangMan {
      */
     private static char getInput() {
         //get input
-        System.out.println("Enter one character.");
+        System.out.println("Enter character number " + mGameCounter);
         String inputString = mScanner.nextLine();
         //check for validity
         if (inputString.length() != 1){
@@ -97,9 +100,9 @@ public class HangMan {
         char input = getInput();
         //check in hangman system
         if (!mTargetWord.contains(String.valueOf(input))) {
-            mWrongCharacters.add(input);
             mCurrentLife--;
             System.out.println("This is a wrong character!");
+            mWrongCharacters.add(input);
         }
         else{
             for(int i = 0; i < mTargetWord.length(); i++){
